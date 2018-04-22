@@ -53,7 +53,7 @@ app.use('/assets', express.static('dist/static'))
 
 // Listen API files
 app.use('/api', dynapi({
-  watch: true,
+  watch: !production,
   router: {
     src: './server',
     entry: './api',
@@ -66,7 +66,7 @@ app.use('/api', dynapi({
 
 // Listen Page files
 app.use('/', dynapi({
-  watch: true,
+  watch: !production,
   router: {
     entry: './pages'
   }

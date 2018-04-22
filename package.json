@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "nodemon -w server/index.js server/index.js",
-    "build": "node ./build/webpack.js --build ./dist/assets.js"
+    "build": "node ./build/webpack.js --build ./dist/assets.js",
+    "start": "NODE_ENV=production node server/index.js"
   },
   "dependencies": {
     "@shirohana/bulma-stylus": "^0.7.1",
