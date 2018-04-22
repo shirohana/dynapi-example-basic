@@ -1,9 +1,7 @@
-import axios from 'axios'
-
 export const method = 'post'
-export const url = '/api/user/sign-in'
+export const url = '/user/sign-in'
 
-export default async () => {
+export default async (axios) => {
   try {
     const { data } = await axios.post(url, {
       username: 'hana',

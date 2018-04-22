@@ -1,9 +1,7 @@
-import axios from 'axios'
-
 export const method = 'get'
-export const url = '/api/user/secret'
+export const url = '/user/secret'
 
-export default async () => {
+export default async (axios) => {
   try {
     const { data } = await axios.get(url)
     return JSON.stringify(data, null, 2)

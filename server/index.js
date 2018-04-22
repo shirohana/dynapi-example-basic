@@ -7,6 +7,7 @@ const session = require('express-session')
 
 const production = (process.env.NODE_ENV === 'production')
 const assetsFile = path.join(__dirname, '../dist/assets.js')
+const root = (process.env.ROOT = process.env.ROOT || '')
 
 if (production) {
   if (!fs.existsSync(assetsFile)) {
@@ -32,7 +33,7 @@ if (production) {
 const PORT = process.env.PORT || 3000
 const HOST = process.env.HOST || '127.0.0.1'
 
-const app = express()
+let app = express()
 
 app.disable('x-powered-by')
 app.set('view engine', 'pug')
@@ -71,6 +72,12 @@ app.use('/', dynapi({
     entry: './pages'
   }
 }))
+
+if (root) {
+  let wrapper = express()
+  wrapper.use(root, app)
+  app = wrapper
+}
 
 app.listen(PORT, HOST, function () {
   console.log(`Server starts listen on ${HOST}:${PORT}`)

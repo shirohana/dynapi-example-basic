@@ -1,4 +1,7 @@
 const { join } = require('path')
+const webpack = require('webpack')
+
+const root = process.env.ROOT || ''
 
 module.exports = {
   mode: (process.env.NODE_ENV === 'production' ? 'production' : 'development'),
@@ -6,7 +9,7 @@ module.exports = {
   output: {
     filename: 'bundle.[hash:8].js',
     path: join(__dirname, '../dist/static'),
-    publicPath: '/assets/'
+    publicPath: root + '/assets/'
   },
   module: {
     rules: [
@@ -21,5 +24,12 @@ module.exports = {
     ]
   },
   target: 'web',
-  externals: []
+  externals: [],
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify({
+        ROOT: root
+      })
+    })
+  ]
 }

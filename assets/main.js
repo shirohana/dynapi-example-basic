@@ -1,7 +1,10 @@
 import './style/index.styl'
+import axios from 'axios'
 import actions from './actions'
 
-(function (document) {
+axios.defaults.baseURL = (process.env.ROOT || '') + '/api'
+
+;(function (document) {
   const viewer = document.getElementById('viewer')
 
   Object.keys(actions).forEach(key => {
@@ -12,7 +15,7 @@ import actions from './actions'
 
     if (el) {
       el.addEventListener('click', async () => {
-        let text = await handle()
+        let text = await handle(axios)
         const now = new Date()
         text = `${now}\n${method} ${url}\n\n${text}`
         viewer.innerText = text
@@ -20,4 +23,3 @@ import actions from './actions'
     }
   })
 })(document)
-
