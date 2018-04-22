@@ -1,5 +1,27 @@
 {
   "name": "@shirohana/dynapi-example-basic-routing",
   "license": "MIT",
-  "private": true
+  "private": true,
+  "scripts": {
+    "dev": "nodemon -w server/index.js server/index.js",
+    "build": "node ./build/webpack.js --build ./dist/assets.js"
+  },
+  "dependencies": {
+    "@shirohana/bulma-stylus": "^0.7.1",
+    "axios": "^0.18.0",
+    "body-parser": "^1.18.2",
+    "css-loader": "^0.28.11",
+    "dynapi": "^0.4.0-beta.1",
+    "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "pug": "^2.0.3",
+    "style-loader": "^0.21.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.3",
+    "webpack": "^4.5.0",
+    "webpack-cli": "^2.0.14"
+  }
 }

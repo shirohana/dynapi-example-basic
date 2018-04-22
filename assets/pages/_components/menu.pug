@@ -1,0 +1,6 @@
+aside.menu
+  each apiGroup, label in apiGroups
+    p.menu-label= label
+    ul.menu-list
+      each api in apiGroup
+        li: a( id=api[0] )= api[1]
